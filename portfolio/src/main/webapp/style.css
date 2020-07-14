@@ -1,3 +1,22 @@
+a {
+    text-decoration: none;
+}
+
+button {
+    background: whitesmoke;
+    width: 70px;
+    height: 70px;
+    border: thin solid rgba(0, 0, 0, 0.726);
+}
+
+button:hover {
+    box-shadow: 3px 3px 3px grey;
+}
+
+button text {
+    font-weight: bold;
+    color:black;
+}
 
 #gallery {
     background-color: black;
@@ -19,6 +38,7 @@
 
 #greeting-container {
   margin-top: 20px;
+  color: black; 
 }
 
 #g_title {
@@ -47,4 +67,98 @@
 
 .image-thumbnails img:hover {
   border: thick solid rgb(218, 164, 84);
+}
+
+#intro {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    height: 400px;
+    width: 892px;
+    border: thick solid black;
+}
+
+body {
+	font: 100 1.3em sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	padding: 0 5rem;
+}
+
+h1 {
+	font-weight: 100;
+}
+
+.display {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	gap: 0.1em;
+}
+
+.HOVER {
+	--width: 100%;
+	--time: 0.7s;
+
+	position: relative;
+	display: inline-block;
+	height: 1em;
+	padding: 1em;
+
+	color: white;
+	background: #222;
+	overflow: hidden;
+}
+
+.HOVER text {
+	position: relative;
+	z-index: 5;
+	
+	transition: color var(--time);
+}
+
+.HOVER:hover text {
+	color: #222;
+}
+
+.HOVER span {
+	position: absolute;
+	display: block;
+	content: "";
+	z-index: 0;
+	width: 0;
+	height: 0;
+	
+	border-radius: 100%;
+	
+	transform: translate(-50%, -50%);
+	transition: width var(--time), padding-top var(--time);
+}
+
+#TIL span {
+    background: rgb(212, 226, 240);
+}
+
+#MC span {
+    background: rgb(252, 252, 206);
+}
+
+#MP span {
+    background: rgb(250, 212, 227);
+}
+
+#MKG span {
+    background: rgb(214, 252, 205);
+}
+
+.HOVER:hover span {
+	width: calc(var(--width) * 2.25);
+	padding-top: calc(var(--width) * 2.25);
+}
+
+.link{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	font-size: 0.7em;
 }
