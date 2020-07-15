@@ -17,9 +17,12 @@
  */
 function addRandomGreeting() {
   const greetings =
-      ['Avoid fruits and nuts. You are what you eat', ' Chop your own wood and it will warm you twice', 
-      ' Life is far too important a thing ever to talk seriously about', 
-      'Your future depends on your dreams. So go to sleep', 'I know that you believe you understand what you think I said, but I’m not sure you realize that what you heard is not what I meant.'];
+      ['Avoid fruits and nuts. You are what you eat', 
+       'Chop your own wood and it will warm you twice', 
+       'Life is far too important a thing ever to talk seriously about', 
+       'Your future depends on your dreams. So go to sleep', 
+       'I know that you believe you understand what you think I said, but \
+        I’m not sure you realize that what you heard is not what I meant.'];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
