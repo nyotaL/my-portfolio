@@ -151,3 +151,93 @@ h1 {
   padding-top: calc(var(--width) * 2.25);
   width: calc(var(--width) * 2.25);
 }
+
+#my_poems {
+    background: rgb(248, 250, 255);
+}
+
+#maket { 
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+}
+
+td #maket {
+  vertical-align: top; 
+}
+
+#spacer {
+  width: 10px; 
+}
+
+#leftcol {
+  width: 595px;
+  border-right: 1px dotted #000;
+}
+
+.poem1 {
+  border-bottom: thin dotted black;
+  border-top: thin dotted black;
+  height: 225px;
+}
+
+.poem1 text:hover {
+  color:rgb(3, 3, 206);
+}
+
+.poem1:hover {
+    background: rgba(255, 252, 244, 0.397);
+}
+
+.poem2 {
+  border-bottom: thin dotted black;
+  height: 275px;
+}
+
+.poem2 text:hover {
+  color:rgb(3, 3, 206);
+}
+
+.poem2:hover {
+    background: rgba(255, 252, 244, 0.397);
+}
+
+.poem3 {
+  border-bottom: thin dotted black;
+  height: 1575px;
+}
+
+.poem3 text:hover {
+  color:rgb(3, 3, 206);
+}
+
+.poem3:hover {
+    background: rgba(255, 252, 244, 0.397);
+}
+
+#poem {
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
+#trans {
+  font-size: 22px;
+  font-weight: normal;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#mp_title {
+  color: black;
+  font-family: Helvetica, Arial, sans-serif;
+  text-shadow: 3px 3px 3px rgba(218, 216, 248, 0.904);
+}
+
+#mp_title {
+  display: flex;
+  justify-content: center;
+}
