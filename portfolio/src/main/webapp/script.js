@@ -53,8 +53,8 @@ function translate(num) {
             Weakly kissing humps<br>\
             With rusty cheekbones, with slippery lips,<br>\
             To feebly bring down the knees,<br>\
-            Again trying to beg Galateya<br>\
-            From fate.<br>\
+            Begging the fate again<br>\
+            For Galateya.<br>\
             </text>";
     const name_3 = "         <text> \
             <br>I'm not interested in metaphors.<br>\
@@ -88,7 +88,7 @@ function translate(num) {
             I imagine music,<br>\
             A concert of the great composer,<br>\
             Where I am a child on a square chair.<br>\
-            I'm fidgeting, with nowhere to put my hands,<br>\
+            I'm fidgeting with nowhere to put my hands,<br>\
             I can't catch the rhythm,<br>\
             Nothing is clear.<br>\
             <br>\
@@ -128,4 +128,14 @@ function translate(num) {
     } else if (num == 3) {
         document.getElementById("poem3").innerHTML = name_3;
     }
+}
+
+function light() {
+    document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulbon.gif';
+    document.getElementById('my_poems').style.backgroundColor = 'rgba(250, 237, 150, 0.586)';
+}
+
+function dark() {
+    document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulboff.gif';
+    document.getElementById('my_poems').style.backgroundColor = 'rgb(248, 250, 255)';
 }

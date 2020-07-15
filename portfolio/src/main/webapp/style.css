@@ -33,7 +33,7 @@ button text {
   border-right: thick solid whitesmoke;
   margin-left: auto;
   margin-right: auto;
-  width: 1200px;
+  width: 1300px;
 }
 
 #greeting-container {
@@ -56,6 +56,10 @@ button text {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+iframe {
+  margin: 10px;
 }
 
 .image-thumbnails img {
@@ -153,7 +157,24 @@ h1 {
 }
 
 #my_poems {
-    background: rgb(248, 250, 255);
+  background: rgb(248, 250, 255);
+}
+
+#light {
+  display: inline-block;
+  margin: 20px;
+}
+
+#light button {
+  border-radius: 50%;
+  background: rgb(216, 210, 248);
+  height: 40px;
+  width: 40px;
+}
+
+#light {
+  display: flex;
+  justify-content: center;
 }
 
 #maket { 
