@@ -7,13 +7,30 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>Katya's Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    <p>Click <a href="Kite_gallery.html">here</a> to see my kite gallery!</p>
+        <div id="content">
+          <h1>Katya's Portfolio</h1>
+          <text id="intro">Hi! My name is Katya...</text> 
+          <div class="display">
+            <a href="til.html" class="HOVER" id="til">
+              <span></span>
+              <text>10 things I love!</text>
+            </a>
+            <a href="kite_gallery.html" class="HOVER" id="mkg">
+              <span></span>
+              <text>My Kitesurfing gallery!</text>
+            </a>
+            <a href="my_poems.html" class="HOVER" id="mp">
+              <span></span>
+              <text>My poems!</text>
+            </a>
+            <a href="contacts.html" class="HOVER" id="mc">
+              <span></span>
+              <text>My contacts!</text>
+            </a>
+        </div>    
+        <p>Click here to get a tip of the day from me:</p>
+        <button onclick="addRandomGreeting()"><text>(◕‿◕)</text></button>
+        <div id="greeting-container"></div>
     </div>
   </body>
 </html>

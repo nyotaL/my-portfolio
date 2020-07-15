@@ -1,6 +1,25 @@
+a {
+  text-decoration: none;
+}
+
+button {
+  background: whitesmoke;
+  border: thin solid rgba(0, 0, 0, 0.726);
+  height: 70px;
+  width: 70px;
+}
+
+button:hover {
+  box-shadow: 3px 3px 3px grey;
+}
+
+button text {
+  color: black;
+  font-weight: bold;
+}
 
 #gallery {
-    background-color: black;
+  background-color: black;
 }
 
 #content {
@@ -10,21 +29,22 @@
 }
 
 #gallery_content {
+  border-left: thick solid whitesmoke;
+  border-right: thick solid whitesmoke;
   margin-left: auto;
   margin-right: auto;
   width: 1200px;
-  border-left: thick solid whitesmoke;
-  border-right: thick solid whitesmoke;
 }
 
 #greeting-container {
   margin-top: 20px;
+  color: black; 
 }
 
 #g_title {
-    color: whitesmoke;
-    font-family: Helvetica, Arial, sans-serif;
-    text-shadow: 3px 3px 3px rgb(206, 145, 53);
+  color: whitesmoke;
+  font-family: Helvetica, Arial, sans-serif;
+  text-shadow: 3px 3px 3px rgb(206, 145, 53);
 }
 
 #g_title {
@@ -47,4 +67,87 @@
 
 .image-thumbnails img:hover {
   border: thick solid rgb(218, 164, 84);
+}
+
+#intro {
+  border: thick solid black;
+  display:flex;
+  flex-wrap:wrap;
+  height: 400px;
+  justify-content: center;
+  width: 892px;
+}
+
+body {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  font: 100 1.3em sans-serif;
+  padding: 0 5rem;
+}
+
+h1 {
+  font-weight: 100;
+}
+
+.display {
+  display: grid;
+  gap: 0.1em;
+  grid-template-columns: 50% 50%;
+}
+
+.HOVER {
+  --width: 100%;
+  --time: 0.7s;
+
+  background: #222;
+  color: white;
+  display: inline-block;
+  height: 1em;
+  padding: 1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.HOVER text {
+  position: relative;
+  transition: color var(--time);
+  z-index: 5;
+}
+
+.HOVER:hover text {
+  color: #222;
+}
+
+.HOVER span {
+  border-radius: 100%;
+  content: "";
+  display: block;
+  height: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: width var(--time), padding-top var(--time);
+  width: 0;
+  z-index: 0;
+}
+
+#til span {
+  background: rgb(212, 226, 240);
+}
+
+#mc span {
+  background: rgb(252, 252, 206);
+}
+
+#mp span {
+  background: rgb(250, 212, 227);
+}
+
+#mkg span {
+  background: rgb(214, 252, 205);
+}
+
+.HOVER:hover span {
+  padding-top: calc(var(--width) * 2.25);
+  width: calc(var(--width) * 2.25);
 }
