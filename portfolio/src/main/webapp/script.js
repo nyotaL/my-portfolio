@@ -146,3 +146,160 @@ function dark() {
     document.getElementById('poem_2').style.backgroundColor = 'black';
     document.getElementById('poem_3').style.backgroundColor = 'black';
 }
+
+var amplitude = 70;
+var left_pos = 600;
+var top_pos = -600;
+var pi = Math.PI;
+var inc = pi / 30;
+var position_1=0;
+var position_2=0;
+var position_3=0;
+var position_4=0;
+var position_5=0;
+var position_6=0;
+var position_7=0;
+var position_8=0;
+var position_9=0;
+var position_10=0;
+
+function fly_1() {
+    var left_pos = 600;
+    var top_pos = -660;
+    var obj = document.getElementById("one");
+    var b = document.getElementById("fact");
+    b.style.visibility = "hidden";
+    obj.style.visibility = "visible";
+    position_1 += inc;
+    obj.style.top = 2.5*amplitude * Math.cos(position_1)* Math.sin(position_1) + left_pos + "px";
+    obj.style.left = (-4)*amplitude * Math.sin(position_1) - top_pos + "px";
+    setTimeout("fly_1()", 70);
+}
+
+function fly_2() {
+    var left_pos = 600;
+    var top_pos = -500;
+    var obj = document.getElementById("two");
+    var b = document.getElementById("fact");
+    b.style.visibility = "hidden";
+    obj.style.visibility = "visible";
+    position_2 += inc;
+    obj.style.left = amplitude * Math.cos(position_2)* Math.sin(position_2) + left_pos + "px";
+    obj.style.top = (-2)*amplitude * Math.sin(position_2 + inc) - top_pos + "px";
+    setTimeout("fly_2()", 70);
+}
+function fly_3() {
+    var left_pos = 1000;
+    var top_pos = -100;
+    var obj = document.getElementById("three");
+    var b = document.getElementById("fact");
+    b.style.visibility = "hidden";
+    obj.style.visibility = "visible";
+    position_3 += inc;
+    obj.style.left = amplitude * Math.cos(position_3)* Math.sin(position_3) + left_pos + "px";
+    obj.style.top = (-1)*amplitude * Math.sin(position_3) - top_pos + "px";
+    setTimeout("fly_3()", 70);
+}
+
+function fly_4() {
+    var left_pos = 800;
+    var top_pos = -200;
+    var obj = document.getElementById("four");
+    var b = document.getElementById("fact");
+    b.style.visibility = "hidden";
+    obj.style.visibility = "visible";
+    position_4 += inc;
+    obj.style.left = 4*amplitude * Math.cos(position_4)* Math.sin(position_4) + left_pos + "px";
+    obj.style.top = (-1)*amplitude * Math.sin(position_4) - top_pos + "px";
+    setTimeout("fly_4()", 70);
+}
+
+function fly_5() {
+    var left_pos = 1200;
+    var top_pos = -500;
+    var obj = document.getElementById("five");
+    var b = document.getElementById("fact");
+    b.style.visibility = "hidden";
+    obj.style.visibility = "visible";
+    position_5 += inc;
+    obj.style.left = (-2)*amplitude * Math.cos(position_5)* Math.sin(position_5) + left_pos + "px";
+    obj.style.top = 4*amplitude * Math.sin(position_5) - top_pos + "px";
+    setTimeout("fly_5()", 70);
+}
+
+function fly_6() {
+    var left_pos = 240;
+    var top_pos = -350;
+    var obj = document.getElementById("six");
+    var b = document.getElementById("fact");
+    b.style.visibility = "hidden";
+    obj.style.visibility = "visible";
+    position_6 += inc;
+    obj.style.left = amplitude * Math.cos(position_6)* Math.sin(position_6) + left_pos + "px";
+    obj.style.top = (-1)*amplitude * Math.sin(position_6) - top_pos + "px";
+    setTimeout("fly_6()", 70);
+}
+
+function fly_7() {
+    var left_pos = 900;
+    var top_pos = -800;
+    var obj = document.getElementById("seven");
+    var b = document.getElementById("fact");
+    b.style.visibility = "hidden";
+    obj.style.visibility = "visible";
+    position_7 += inc;
+    obj.style.left = 5*amplitude * Math.cos(position_7)* Math.sin(position_7) + left_pos + "px";
+    obj.style.top = (-1.5)*amplitude * Math.sin(position_7) - top_pos + "px";
+    setTimeout("fly_7()", 70);
+}
+
+function fly_8() {
+    var left_pos = 1300;
+    var top_pos = -300;
+    var obj = document.getElementById("eight");
+    var b = document.getElementById("fact");
+    b.style.visibility = "hidden";
+    obj.style.visibility = "visible";
+    position_8 += inc;
+    obj.style.left = 3*amplitude * Math.cos(position_8)* Math.sin(position_8) + left_pos + "px";
+    obj.style.top = (-0.5)*amplitude * Math.sin(position_8) - top_pos + "px";
+    setTimeout("fly_8()", 70);
+}
+
+function fly_9() {
+    var left_pos = 500;
+    var top_pos = -200;
+    var obj = document.getElementById("nine");
+    var b = document.getElementById("fact");
+    b.style.visibility = "hidden";
+    obj.style.visibility = "visible";
+    position_9 += inc;
+    obj.style.left = 2*amplitude * Math.cos(position_9)* Math.sin(position_9) + left_pos + "px";
+    obj.style.top = (-0.5)*amplitude * Math.sin(position_9) - top_pos + "px";
+    setTimeout("fly_9()", 70);
+}
+
+function fly_10() {
+    var left_pos = 1400;
+    var top_pos = -700;
+    var obj = document.getElementById("ten");
+    var b = document.getElementById("fact");
+    b.style.visibility = "hidden";
+    obj.style.visibility = "visible";
+    position_10 += inc;
+    obj.style.left = 2*amplitude * Math.cos(position_10)* Math.sin(position_10) + left_pos + "px";
+    obj.style.top = (-1)*amplitude * Math.sin(position_10) - top_pos + "px";
+    setTimeout("fly_10()", 70);
+}
+
+var el = document.getElementById("fact");
+el.addEventListener("click", fly_1);
+el.addEventListener("click", fly_2);
+el.addEventListener("click", fly_3);
+el.addEventListener("click", fly_4);
+el.addEventListener("click", fly_5);
+el.addEventListener("click", fly_6);
+el.addEventListener("click", fly_7);
+el.addEventListener("click", fly_8);
+el.addEventListener("click", fly_9);
+el.addEventListener("click", fly_10);

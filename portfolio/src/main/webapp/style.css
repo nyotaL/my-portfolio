@@ -281,3 +281,118 @@ td #maket {
   display: flex;
   justify-content: center;
 }
+
+#til_page {
+    background: rgb(0, 0, 0);
+}
+
+#fact {
+  background-color: rgb(5, 5, 104);
+  border: thick double rgba(0, 255, 255, 0.774);
+  border-radius: 30%;
+  height: 600px;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+}
+
+#til_text {
+    color:aliceblue;
+    font-size: 50px;
+    text-shadow: 2px 2px 2px rgb(7, 227, 235);
+}
+
+#one {
+  bottom: 400px;
+  color: rgb(30, 250, 10);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#two {
+  bottom: 400px;
+  color: rgba(250, 20, 193, 0.774);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#three {
+  bottom: 400px;
+  color: rgb(248, 244, 12);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#four {
+  bottom: 400px;
+  color: rgb(253, 67, 67);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#five {
+  bottom: 400px;
+  color: rgb(13, 253, 241);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#six {
+  bottom: 400px;
+  color: rgb(252, 145, 4);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#seven {
+  bottom: 400px;
+  color: rgb(203, 150, 253);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#eight {
+  bottom: 400px;
+  color: rgb(23, 201, 97);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#nine {
+  bottom: 400px;
+  color: rgb(96, 214, 250);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#ten {
+  bottom: 400px;
+  color: rgb(47, 79, 255);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+li {
+    list-style-type: none;
+}
