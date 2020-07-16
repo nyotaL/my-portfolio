@@ -3,7 +3,6 @@ a {
 }
 
 button {
-  background: whitesmoke;
   border: thin solid rgba(0, 0, 0, 0.726);
   height: 70px;
   width: 70px;
@@ -33,7 +32,7 @@ button text {
   border-right: thick solid whitesmoke;
   margin-left: auto;
   margin-right: auto;
-  width: 1200px;
+  width: 1300px;
 }
 
 #greeting-container {
@@ -56,6 +55,10 @@ button text {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+iframe {
+  margin: 10px;
 }
 
 .image-thumbnails img {
@@ -150,4 +153,131 @@ h1 {
 .HOVER:hover span {
   padding-top: calc(var(--width) * 2.25);
   width: calc(var(--width) * 2.25);
+}
+
+#my_poems { 
+  background-color: /*rgb(248, 250, 255)*/ black;
+  background-image: none;
+} 
+
+#light {
+  display: inline-block;
+  margin: 30px;
+}
+
+#light button {
+  border-radius: 50%;
+  background: rgb(216, 210, 248);
+  height: 40px;
+  width: 40px;
+}
+
+#light {
+  display: flex;
+  justify-content: center;
+}
+
+#maket { 
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+}
+
+td #maket {
+  vertical-align: top; 
+}
+
+#spacer {
+  width: 10px; 
+}
+
+#leftcol {
+  width: 595px;
+}
+
+.poem1 {
+  border-bottom: thin dotted black;
+  height: 225px;
+}
+
+.poem1 text:hover {
+  color:rgb(3, 3, 206);
+}
+
+.poem1:hover {
+  background: rgba(255, 252, 244, 0.397);
+}
+
+.poem2 {
+  border-bottom: thin dotted black;
+  height: 275px;
+}
+
+.poem2 text:hover {
+  color:rgb(3, 3, 206);
+}
+
+.poem2:hover {
+  background: rgba(255, 252, 244, 0.397);
+}
+
+.poem3 {
+  border-bottom: thin dotted black;
+  height: 1575px;
+}
+
+.poem3 text:hover {
+  color:rgb(3, 3, 206);
+}
+
+.poem3:hover {
+  background: rgba(255, 252, 244, 0.397);
+}
+
+#poem_1 {
+  background-color: black;
+  border-radius: 30%;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+}
+
+#poem_2 {
+  background-color: black;
+  border-radius: 30%;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+}
+
+#poem_3 {
+  background-color: black;
+  border-width: 1px 1px 1px;
+  border-radius: 30%;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+}
+
+#trans {
+  font-size: 12px;
+  font-weight: normal;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#mp_title {
+  color: black;
+  font-family: Helvetica, Arial, sans-serif;
+  text-shadow: 3px 3px 3px rgba(218, 216, 248, 0.904);
+}
+
+#mp_title {
+  display: flex;
+  justify-content: center;
 }
