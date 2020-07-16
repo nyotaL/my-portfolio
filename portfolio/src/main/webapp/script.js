@@ -132,10 +132,19 @@ function translate(num) {
 
 function light() {
     document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulbon.gif';
-    document.getElementById('my_poems').style.backgroundColor = 'rgba(250, 237, 150, 0.586)';
+    document.getElementById('my_poems').style.backgroundColor = 'none'/*'rgba(250, 237, 150, 0.586)'*/;
+    document.getElementById('my_poems').style.backgroundImage = "url('Backgrounds/paper.jpg')";
+    document.getElementById('poem_1').style.backgroundColor = 'rgba(245, 245, 245, 0.301)';
+    document.getElementById('poem_2').style.backgroundColor = 'rgba(245, 245, 245, 0.301)';
+    document.getElementById('poem_3').style.backgroundColor = 'rgba(245, 245, 245, 0.301)';
+    //document.getElementById('poem').slyle.backgroundColor = 'whitesmoke';
 }
 
 function dark() {
     document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulboff.gif';
-    document.getElementById('my_poems').style.backgroundColor = 'rgb(248, 250, 255)';
+    //document.getElementById('my_poems').style.backgroundColor = 'black';
+    document.getElementById('my_poems').style.backgroundImage = "none";
+    document.getElementById('poem_1').style.backgroundColor = 'black';
+    document.getElementById('poem_2').style.backgroundColor = 'black';
+    document.getElementById('poem_3').style.backgroundColor = 'black';
 }

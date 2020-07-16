@@ -3,7 +3,6 @@ a {
 }
 
 button {
-  background: whitesmoke;
   border: thin solid rgba(0, 0, 0, 0.726);
   height: 70px;
   width: 70px;
@@ -156,13 +155,14 @@ h1 {
   width: calc(var(--width) * 2.25);
 }
 
-#my_poems {
-  background: rgb(248, 250, 255);
-}
+#my_poems { 
+  background-color: /*rgb(248, 250, 255)*/ black;
+  background-image: none;
+} 
 
 #light {
   display: inline-block;
-  margin: 20px;
+  margin: 30px;
 }
 
 #light button {
@@ -193,12 +193,10 @@ td #maket {
 
 #leftcol {
   width: 595px;
-  border-right: 1px dotted #000;
 }
 
 .poem1 {
   border-bottom: thin dotted black;
-  border-top: thin dotted black;
   height: 225px;
 }
 
@@ -236,15 +234,36 @@ td #maket {
   background: rgba(255, 252, 244, 0.397);
 }
 
-#poem {
-  height: 150px;
+#poem_1 {
+  background-color: black;
+  border-radius: 30%;
+  height: 80px;
   margin-left: auto;
   margin-right: auto;
-  width: 200px;
+  width: 80px;
+}
+
+#poem_2 {
+  background-color: black;
+  border-radius: 30%;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+}
+
+#poem_3 {
+  background-color: black;
+  border-width: 1px 1px 1px;
+  border-radius: 30%;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
 }
 
 #trans {
-  font-size: 22px;
+  font-size: 12px;
   font-weight: normal;
   margin-top: auto;
   margin-bottom: auto;
