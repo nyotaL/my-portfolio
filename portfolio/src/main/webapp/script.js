@@ -152,28 +152,86 @@ var left_pos = 600;
 var top_pos = -600;
 var pi = Math.PI;
 var inc = pi / 30;
-var param = 0;
+var params = new Map();
+params.set("one", 0).set("two", 0).set("three", 0).set("four", 0).set("five", 0);
+params.set("six", 0).set("seven", 0).set("eight", 0).set("nine", 0).set("ten", 0);
 
 
 function fly(left_pos, top_pos, position, f_ratio, s_ratio, str) {
     var fact = document.getElementById(str);
     var button = document.getElementById("fact");
+    var play_button = document.getElementById("bubbles");
     button.style.visibility = "hidden";
     fact.style.visibility = "visible";
+    play_button.style.visibility = "visible";
     position += inc;
     fact.style.left = f_ratio*amplitude * Math.cos(position)* Math.sin(position) + left_pos + "px";
     fact.style.top = s_ratio*amplitude * Math.sin(position) - top_pos + "px";
     setTimeout(function go() {fly(left_pos, top_pos, position, f_ratio, s_ratio, str);}, 70);
 }
 
+function bubble(str) {
+    params.set(str, 1);
+    var e = document.getElementById(str);
+    e.innerText = "";
+    e.style.height = "117px";
+    e.style.width = "100px";
+    e.style.backgroundImage = "url('Backgrounds/bub0.jpg')";
+    setTimeout(function pop1() {e.style.backgroundImage = "url('Backgrounds/bub.jpg')";}, 100);
+}
+
+function pop(str) {
+    var e = document.getElementById(str);
+    if (params.get(str) == 1) {
+        setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub1.jpg')";
+        setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub2.jpg')";
+        setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub3.jpg')";
+        setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub4.jpg')";
+        setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub5.jpg')";
+        setTimeout(function pop2() {e.style.backgroundImage = "none";}, 100);}, 100);}, 100);}, 100);}, 100);}, 100);
+        params.set(str, 0);
+    } 
+}
+
 var el = document.getElementById("fact");
 el.addEventListener("click", function() {fly(600, -600, 0, 2.5, -4, "one");}, false);
-el.addEventListener("click", function() {fly(300, -600, 0, 3.5, -2, "two");}, false);
+el.addEventListener("click", function() {fly(350, -500, 0, 3.5, -2, "two");}, false);
 el.addEventListener("click", function() {fly(1000, -100, 0, 1, -1, "three");}, false);
-el.addEventListener("click", function() {fly(800, -200, 0, 4, -1, "four");}, false);
+el.addEventListener("click", function() {fly(800, -300, 0, 4, -1, "four");}, false);
 el.addEventListener("click", function() {fly(1200, -500, 0, -2, 4, "five");}, false);
 el.addEventListener("click", function() {fly(240, -350, 0, 1, -1, "six");}, false);
-el.addEventListener("click", function() {fly(900, -800, 0, 5, -1.5, "seven");}, false);
+el.addEventListener("click", function() {fly(900, -750, 0, 5, -1.5, "seven");}, false);
 el.addEventListener("click", function() {fly(1300, -300, 0, 3, -0.5, "eight");}, false);
 el.addEventListener("click", function() {fly(500, -200, 0, 2, -0.5, "nine");}, false);
 el.addEventListener("click", function() {fly(1400, -700, 0, 2, -1, "ten");}, false);
+
+var e = document.getElementById("bubbles");
+e.addEventListener("click", function() {
+var txt = document.getElementById("fun");
+txt.innerHTML = "Pop the bubbles!<br> Click to play again";
+bubble("one");
+bubble("two");
+bubble("three");
+bubble("four");
+bubble("five");
+bubble("six");
+bubble("seven");
+bubble("eight");
+bubble("nine");
+bubble("ten");}, false);
+
+function animation(str) {
+    var e = document.getElementById(str);
+    e.addEventListener("mouseover", function() {pop(str);});
+}
+
+animation("one");
+animation("two");
+animation("three");
+animation("four");
+animation("five");
+animation("six");
+animation("seven");
+animation("eight");
+animation("nine");
+animation("ten");

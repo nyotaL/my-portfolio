@@ -283,18 +283,28 @@ td #maket {
 }
 
 #til_page {
-    background: rgb(0, 0, 0);
+    background: black;
 }
 
 #fact {
-  background-color: rgb(5, 5, 104);
-  border: thick double rgba(0, 255, 255, 0.774);
-  border-radius: 30%;
-  height: 600px;
+  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+  border-radius: 10px;
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0,0,0,.1);
+  color: white;
+  display: inline-block;
+  height: 400px;
   margin-top: 200px;
   margin-left: auto;
   margin-right: auto;
-  width: 600px;
+  outline: none;
+  text-decoration: none;
+  transition: .5s;
+  width: 400px;
+}
+
+#fact:hover {
+  background-position: right center;
 }
 
 #til_text {
@@ -303,8 +313,26 @@ td #maket {
   text-shadow: 2px 2px 2px rgb(7, 227, 235);
 }
 
+#bubbles {
+  background-color: rgba(5, 5, 104, 0.582);
+  border: thick double rgba(0, 255, 255, 0.404);
+  border-radius: 30%;
+  height: 100px;
+  margin-top: 150px;
+  visibility: hidden;
+  width: 200px;
+}
+
+#fun {
+  color:rgb(206, 231, 253);
+  font-size: 20px;
+  text-shadow: 2px 2px 2px rgb(7, 227, 235);
+}
+
 #one {
-  bottom: 400px;
+  background-image: url(Backgrounds/bub0.jpg), url(Backgrounds/bub.jpg), url(Backgrounds/bub1.jpg), url(Backgrounds/bub2.jpg), url(Backgrounds/bub3.jpg), 
+  url(Backgrounds/bub4.jpg), url(Backgrounds/bub5.jpg);
+  background-size: 100px 117px;
   color: rgb(30, 250, 10);
   font-size: 30px;
   font-weight: bold;
@@ -394,5 +422,7 @@ td #maket {
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
+
+
