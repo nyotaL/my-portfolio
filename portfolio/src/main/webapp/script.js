@@ -161,6 +161,7 @@ function fly(left_pos, top_pos, position, f_ratio, s_ratio, str) {
     var fact = document.getElementById(str);
     var button = document.getElementById("fact");
     var play_button = document.getElementById("bubbles");
+    button.style.transition = "none";
     button.style.visibility = "hidden";
     fact.style.visibility = "visible";
     play_button.style.visibility = "visible";

@@ -287,12 +287,11 @@ td #maket {
 }
 
 #fact {
-  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+  background-image: linear-gradient(to right, rgb(247, 162, 232) 0%, #4830F0 51%, #9EEFE1 100%);
   border-radius: 10px;
   background-size: 200% auto;
-  box-shadow: 0 0 20px rgba(0,0,0,.1);
-  color: white;
-  display: inline-block;
+  box-shadow: 0 0 5px rgba(230, 95, 207, 0.349);
+  color: rgba(236, 220, 74, 0.76);
   height: 400px;
   margin-top: 200px;
   margin-left: auto;
@@ -314,13 +313,22 @@ td #maket {
 }
 
 #bubbles {
-  background-color: rgba(5, 5, 104, 0.582);
-  border: thick double rgba(0, 255, 255, 0.404);
-  border-radius: 30%;
+  background-image: linear-gradient(to right, rgb(247, 162, 232) 0%, #4830F0 51%, #9EEFE1 100%);
+  border-radius: 10px;
+  background-size: 200% auto;
+  box-shadow: 0 0 5px rgba(230, 95, 207, 0.349);
+  color: rgba(236, 220, 74, 0.76);
   height: 100px;
   margin-top: 150px;
+  outline: none;
+  text-decoration: none;
+  transition: .5s;
   visibility: hidden;
-  width: 200px;
+  width: 180px;
+}
+
+#bubbles:hover {
+  background-position: right center;
 }
 
 #fun {
