@@ -156,8 +156,8 @@ h1 {
 }
 
 #my_poems { 
-  background-color: /*rgb(248, 250, 255)*/ black;
-  background-image: none;
+  background-color: black;
+  background-image: url(Backgrounds/poems_black.jpg), url(Backgrounds/paper.jpg);
 } 
 
 #light {

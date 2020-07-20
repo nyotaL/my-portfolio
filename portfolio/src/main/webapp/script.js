@@ -7,7 +7,7 @@
 //     https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// difact_idibuted under the License is difact_idibuted on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -83,7 +83,7 @@ function translate(num) {
             I'm not listening with anything. Because it and me<br>\
             We appeared in one place<br>\
             And, actually,<br>\
-            We are same stream.<br>\
+            We are same fact_ideam.<br>\
             <br>\
             I imagine music,<br>\
             A concert of the great composer,<br>\
@@ -147,20 +147,23 @@ function dark() {
     document.getElementById('poem_3').style.backgroundColor = 'black';
 }
 
-var amplitude = 70;
-var left_pos = 600;
-var top_pos = -600;
-var pi = Math.PI;
-var inc = pi / 30;
-var params = new Map();
-params.set("one", 0).set("two", 0).set("three", 0).set("four", 0).set("five", 0);
-params.set("six", 0).set("seven", 0).set("eight", 0).set("nine", 0).set("ten", 0);
+let amplitude = 70;
+let left_pos = 600;
+let top_pos = -600;
+let pi = Math.PI;
+let inc = pi / 30;
+let facts_animation = new Map();
 
+let facts = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
 
-function fly(left_pos, top_pos, position, f_ratio, s_ratio, str) {
-    var fact = document.getElementById(str);
-    var button = document.getElementById("fact");
-    var play_button = document.getElementById("bubbles");
+facts.forEach(function(item) {
+    facts_animation.set(item, "0");
+});
+
+function fly(left_pos, top_pos, position, f_ratio, s_ratio, fact_id) {
+    let fact = document.getElementById(fact_id);
+    let button = document.getElementById("fact");
+    let play_button = document.getElementById("bubbles");
     button.style.transition = "none";
     button.style.visibility = "hidden";
     fact.style.visibility = "visible";
@@ -168,12 +171,12 @@ function fly(left_pos, top_pos, position, f_ratio, s_ratio, str) {
     position += inc;
     fact.style.left = f_ratio*amplitude * Math.cos(position)* Math.sin(position) + left_pos + "px";
     fact.style.top = s_ratio*amplitude * Math.sin(position) - top_pos + "px";
-    setTimeout(function go() {fly(left_pos, top_pos, position, f_ratio, s_ratio, str);}, 70);
+    setTimeout(function go() {fly(left_pos, top_pos, position, f_ratio, s_ratio, fact_id);}, 70);
 }
 
-function bubble(str) {
-    params.set(str, 1);
-    var e = document.getElementById(str);
+function bubble(fact_id) {
+    facts_animation.set(fact_id, 1);
+    let e = document.getElementById(fact_id);
     e.innerText = "";
     e.style.height = "117px";
     e.style.width = "100px";
@@ -181,20 +184,20 @@ function bubble(str) {
     setTimeout(function pop1() {e.style.backgroundImage = "url('Backgrounds/bub.jpg')";}, 100);
 }
 
-function pop(str) {
-    var e = document.getElementById(str);
-    if (params.get(str) == 1) {
+function pop(fact_id) {
+    let e = document.getElementById(fact_id);
+    if (facts_animation.get(fact_id) == 1) {
         setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub1.jpg')";
         setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub2.jpg')";
         setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub3.jpg')";
         setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub4.jpg')";
         setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub5.jpg')";
         setTimeout(function pop2() {e.style.backgroundImage = "none";}, 100);}, 100);}, 100);}, 100);}, 100);}, 100);
-        params.set(str, 0);
+        facts_animation.set(fact_id, 0);
     } 
 }
 
-var el = document.getElementById("fact");
+let el = document.getElementById("fact");
 el.addEventListener("click", function() {fly(600, -600, 0, 2.5, -4, "one");}, false);
 el.addEventListener("click", function() {fly(350, -500, 0, 3.5, -2, "two");}, false);
 el.addEventListener("click", function() {fly(1000, -100, 0, 1, -1, "three");}, false);
@@ -206,9 +209,9 @@ el.addEventListener("click", function() {fly(1300, -300, 0, 3, -0.5, "eight");},
 el.addEventListener("click", function() {fly(500, -200, 0, 2, -0.5, "nine");}, false);
 el.addEventListener("click", function() {fly(1400, -700, 0, 2, -1, "ten");}, false);
 
-var e = document.getElementById("bubbles");
+let e = document.getElementById("bubbles");
 e.addEventListener("click", function() {
-var txt = document.getElementById("fun");
+let txt = document.getElementById("fun");
 txt.innerHTML = "Pop the bubbles!<br> Click to play again";
 bubble("one");
 bubble("two");
@@ -221,18 +224,12 @@ bubble("eight");
 bubble("nine");
 bubble("ten");}, false);
 
-function animation(str) {
-    var e = document.getElementById(str);
-    e.addEventListener("mouseover", function() {pop(str);});
+function animation(fact_id) {
+    let e = document.getElementById(fact_id);
+    e.addEventListener("mouseover", function() {pop(fact_id);});
 }
 
-animation("one");
-animation("two");
-animation("three");
-animation("four");
-animation("five");
-animation("six");
-animation("seven");
-animation("eight");
-animation("nine");
-animation("ten");
+facts.forEach(function(item) {
+    animation(item);
+});
+
