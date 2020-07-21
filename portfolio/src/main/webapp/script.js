@@ -7,7 +7,7 @@
 //     https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// difact_idibuted under the License is difact_idibuted on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -83,7 +83,7 @@ function translate(num) {
             I'm not listening with anything. Because it and me<br>\
             We appeared in one place<br>\
             And, actually,<br>\
-            We are same stream.<br>\
+            We are same fact_ideam.<br>\
             <br>\
             I imagine music,<br>\
             A concert of the great composer,<br>\
@@ -146,3 +146,90 @@ function dark() {
     document.getElementById('poem_2').style.backgroundColor = 'black';
     document.getElementById('poem_3').style.backgroundColor = 'black';
 }
+
+let amplitude = 70;
+let left_pos = 600;
+let top_pos = -600;
+let pi = Math.PI;
+let inc = pi / 30;
+let facts_animation = new Map();
+
+let facts = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+
+facts.forEach(function(item) {
+    facts_animation.set(item, "0");
+});
+
+function fly(left_pos, top_pos, position, f_ratio, s_ratio, fact_id) {
+    let fact = document.getElementById(fact_id);
+    let button = document.getElementById("fact");
+    let play_button = document.getElementById("bubbles");
+    button.style.transition = "none";
+    button.style.visibility = "hidden";
+    fact.style.visibility = "visible";
+    play_button.style.visibility = "visible";
+    position += inc;
+    fact.style.left = f_ratio*amplitude * Math.cos(position)* Math.sin(position) + left_pos + "px";
+    fact.style.top = s_ratio*amplitude * Math.sin(position) - top_pos + "px";
+    setTimeout(function go() {fly(left_pos, top_pos, position, f_ratio, s_ratio, fact_id);}, 70);
+}
+
+function bubble(fact_id) {
+    facts_animation.set(fact_id, 1);
+    let e = document.getElementById(fact_id);
+    e.innerText = "";
+    e.style.height = "117px";
+    e.style.width = "100px";
+    e.style.backgroundImage = "url('Backgrounds/bub0.jpg')";
+    setTimeout(function pop1() {e.style.backgroundImage = "url('Backgrounds/bub.jpg')";}, 100);
+}
+
+function pop(fact_id) {
+    let e = document.getElementById(fact_id);
+    if (facts_animation.get(fact_id) == 1) {
+        setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub1.jpg')";
+        setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub2.jpg')";
+        setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub3.jpg')";
+        setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub4.jpg')";
+        setTimeout(function pop2() {e.style.backgroundImage = "url('Backgrounds/bub5.jpg')";
+        setTimeout(function pop2() {e.style.backgroundImage = "none";}, 100);}, 100);}, 100);}, 100);}, 100);}, 100);
+        facts_animation.set(fact_id, 0);
+    } 
+}
+
+let el = document.getElementById("fact");
+el.addEventListener("click", function() {fly(600, -600, 0, 2.5, -4, "one");}, false);
+el.addEventListener("click", function() {fly(350, -500, 0, 3.5, -2, "two");}, false);
+el.addEventListener("click", function() {fly(1000, -100, 0, 1, -1, "three");}, false);
+el.addEventListener("click", function() {fly(800, -300, 0, 4, -1, "four");}, false);
+el.addEventListener("click", function() {fly(1200, -500, 0, -2, 4, "five");}, false);
+el.addEventListener("click", function() {fly(240, -350, 0, 1, -1, "six");}, false);
+el.addEventListener("click", function() {fly(900, -750, 0, 5, -1.5, "seven");}, false);
+el.addEventListener("click", function() {fly(1300, -300, 0, 3, -0.5, "eight");}, false);
+el.addEventListener("click", function() {fly(500, -200, 0, 2, -0.5, "nine");}, false);
+el.addEventListener("click", function() {fly(1400, -700, 0, 2, -1, "ten");}, false);
+
+let e = document.getElementById("bubbles");
+e.addEventListener("click", function() {
+let txt = document.getElementById("fun");
+txt.innerHTML = "Pop the bubbles!<br> Click to play again";
+bubble("one");
+bubble("two");
+bubble("three");
+bubble("four");
+bubble("five");
+bubble("six");
+bubble("seven");
+bubble("eight");
+bubble("nine");
+bubble("ten");}, false);
+
+function animation(fact_id) {
+    let e = document.getElementById(fact_id);
+    e.addEventListener("mouseover", function() {pop(fact_id);});
+}
+
+facts.forEach(function(item) {
+    animation(item);
+});
+

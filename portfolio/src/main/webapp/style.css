@@ -156,8 +156,8 @@ h1 {
 }
 
 #my_poems { 
-  background-color: /*rgb(248, 250, 255)*/ black;
-  background-image: none;
+  background-color: black;
+  background-image: url(Backgrounds/poems_black.jpg), url(Backgrounds/paper.jpg);
 } 
 
 #light {
@@ -281,3 +281,156 @@ td #maket {
   display: flex;
   justify-content: center;
 }
+
+#til_page {
+    background: black;
+}
+
+#fact {
+  background-image: linear-gradient(to right, rgb(247, 162, 232) 0%, #4830F0 51%, #9EEFE1 100%);
+  border-radius: 10px;
+  background-size: 200% auto;
+  box-shadow: 0 0 5px rgba(230, 95, 207, 0.349);
+  color: rgba(236, 220, 74, 0.76);
+  height: 400px;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+  text-decoration: none;
+  transition: .5s;
+  width: 400px;
+}
+
+#fact:hover {
+  background-position: right center;
+}
+
+#til_text {
+  color:rgb(206, 231, 253);
+  font-size: 50px;
+  text-shadow: 2px 2px 2px rgb(7, 227, 235);
+}
+
+#bubbles {
+  background-image: linear-gradient(to right, rgb(247, 162, 232) 0%, #4830F0 51%, #9EEFE1 100%);
+  border-radius: 10px;
+  background-size: 200% auto;
+  box-shadow: 0 0 5px rgba(230, 95, 207, 0.349);
+  color: rgba(236, 220, 74, 0.76);
+  height: 100px;
+  margin-top: 150px;
+  outline: none;
+  text-decoration: none;
+  transition: .5s;
+  visibility: hidden;
+  width: 180px;
+}
+
+#bubbles:hover {
+  background-position: right center;
+}
+
+#fun {
+  color:rgb(206, 231, 253);
+  font-size: 20px;
+  text-shadow: 2px 2px 2px rgb(7, 227, 235);
+}
+
+#one {
+  background-image: url(Backgrounds/bub0.jpg), url(Backgrounds/bub.jpg), url(Backgrounds/bub1.jpg), url(Backgrounds/bub2.jpg), url(Backgrounds/bub3.jpg), 
+  url(Backgrounds/bub4.jpg), url(Backgrounds/bub5.jpg);
+  background-size: 100px 117px;
+  color: rgb(30, 250, 10);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#two {
+  bottom: 400px;
+  color: rgba(250, 20, 193, 0.774);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#three {
+  bottom: 400px;
+  color: rgb(248, 244, 12);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#four {
+  bottom: 400px;
+  color: rgb(253, 67, 67);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#five {
+  bottom: 400px;
+  color: rgb(13, 253, 241);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#six {
+  bottom: 400px;
+  color: rgb(252, 145, 4);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#seven {
+  bottom: 400px;
+  color: rgb(203, 150, 253);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#eight {
+  bottom: 400px;
+  color: rgb(23, 201, 97);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#nine {
+  bottom: 400px;
+  color: rgb(96, 214, 250);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+#ten {
+  bottom: 400px;
+  color: rgb(47, 79, 255);
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  visibility: hidden;
+}
+
+li {
+  list-style-type: none;
+}
+
+
