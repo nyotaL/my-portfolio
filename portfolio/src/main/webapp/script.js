@@ -15,11 +15,11 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const greetings =
+async function addRandomGreeting() {
+  /*const greetings =
       ['Avoid fruits and nuts. You are what you eat', 
        'Chop your own wood and it will warm you twice', 
-       'Life is far too important a thing ever to talk seriously about', 
+       'Life is a far too important thing to ever talk seriously about', 
        'Your future depends on your dreams. So go to sleep', 
        'I know that you believe you understand what you think I said, but \
         I’m not sure you realize that what you heard is not what I meant.'];
@@ -27,9 +27,11 @@ function addRandomGreeting() {
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
-  // Add it to the page.
+  // Add it to the page.*/
+  const response = await fetch('/data');
+  const greeting = await response.text();
   const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  greetingContainer.innerHTML = greeting;
 }
 
 function translate(num) {
@@ -134,17 +136,17 @@ function light() {
     document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulbon.gif';
     document.getElementById('my_poems').style.backgroundColor = 'none';
     document.getElementById('my_poems').style.backgroundImage = "url('Backgrounds/paper.jpg')";
-    document.getElementById('poem_1').style.backgroundColor = 'rgba(245, 245, 245, 0.301)';
-    document.getElementById('poem_2').style.backgroundColor = 'rgba(245, 245, 245, 0.301)';
-    document.getElementById('poem_3').style.backgroundColor = 'rgba(245, 245, 245, 0.301)';
+    document.getElementById('poem_1').style.visibility = "visible";
+    document.getElementById('poem_2').style.visibility = "visible";
+    document.getElementById('poem_3').style.visibility = "visible";
 }
 
 function dark() {
     document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulboff.gif';
     document.getElementById('my_poems').style.backgroundImage = "none";
-    document.getElementById('poem_1').style.backgroundColor = 'black';
-    document.getElementById('poem_2').style.backgroundColor = 'black';
-    document.getElementById('poem_3').style.backgroundColor = 'black';
+    document.getElementById('poem_1').style.visibility = "hidden";
+    document.getElementById('poem_2').style.visibility = "hidden";
+    document.getElementById('poem_3').style.visibility = "hidden";
 }
 
 let amplitude = 70;
