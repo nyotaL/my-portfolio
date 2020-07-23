@@ -16,7 +16,7 @@
  * Adds a random greeting to the page.
  */
 async function addRandomGreeting() {
-  /*const greetings =
+  const greetings =
       ['Avoid fruits and nuts. You are what you eat', 
        'Chop your own wood and it will warm you twice', 
        'Life is a far too important thing to ever talk seriously about', 
@@ -26,12 +26,26 @@ async function addRandomGreeting() {
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-  // Add it to the page.*/
-  const response = await fetch('/data');
-  const greeting = await response.text();
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerHTML = greeting;
+}
+
+async function getComments() {
+    const response = await fetch('/data');
+    const comments = await response.json();
+    const ListElement = document.getElementById("comments-container");
+    ListElement.innerHTML = '';
+    for (let i = 0; i < comments.length; i++) {
+        ListElement.appendChild(
+        createListElement(comments[i]));
+    }
+}
+    
+
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
 
 function translate(num) {
