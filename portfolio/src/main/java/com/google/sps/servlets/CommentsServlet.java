@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet responsible for listing tasks. */
-@WebServlet("/comments-data")
+@WebServlet("/com-data")
 public class CommentsServlet extends HttpServlet {
 
   @Override

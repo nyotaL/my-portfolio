@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html id="feedback">
   <head>
     <meta charset="UTF-8">
     <title>Feedback</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
   </head>
   <body onload="loadComments()">
     <div id="back"><a href="index.html">☚</a></div>
     <div id="feedback_content">
       <h1 id="welcome">Comments</h1>
       <p id="welcome">Comment on my portfolio! See what other people think.</p>
-      <form method="POST" action="/comments-data" id="welcome">
-        <input type="text" name="user" maxlength="20" value="your name"/>
-        <input type="text" name="title" maxlength="200" value="your comment"/>
+      <form method="POST" action="/com-data" id="welcome">
+        <input type="text" id="input_name" name="user" maxlength="20" value="your name"> 
+        <span id="result_user">0/20</span> 
+        <input type="text" id="input_title" name="title" maxlength="100" value="your comment">
+        <span id="result_comment">0/100</span> 
         <p>Rate my site</p>
         <p><select size="1" name="rating">
           <option disabled>Rate</option>
@@ -34,5 +35,6 @@
       <ul id="comment-list"></ul>
 
     </div>
+  <script src="script.js"></script>
   </body>
 </html>
