@@ -15,8 +15,8 @@
 /**
  * Adds a random greeting to the page.
  */
-async function addRandomGreeting() {
-  /*const greetings =
+function addRandomGreeting() {
+  const greetings =
       ['Avoid fruits and nuts. You are what you eat', 
        'Chop your own wood and it will warm you twice', 
        'Life is a far too important thing to ever talk seriously about', 
@@ -26,12 +26,76 @@ async function addRandomGreeting() {
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-  // Add it to the page.*/
-  const response = await fetch('/data');
-  const greeting = await response.text();
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerHTML = greeting;
+}
+
+function count(input_id, counter_id, length) {
+    let el = document.getElementById(counter_id);
+    el.style.border = "thin solid black";
+    el.innerHTML = "<text>" + document.getElementById(input_id).value.length + length + "</text>";
+}
+
+let name_input = document.getElementById("input_name");
+if (name_input) {
+    name_input.addEventListener("input", function() {count("input_name", "result_user", "/20");}, false);
+    name_input.addEventListener("click", function() {name_input.value = "";}, false);
+}
+
+let comment_input = document.getElementById("input_title");
+if (comment_input) {
+    comment_input.addEventListener("input", function() {count("input_title", "result_comment", "/100");}, false);
+    comment_input.addEventListener("click", function() {comment_input.value = "";}, false);
+}
+
+
+/** Fetches comments from the server and adds them to the DOM. */
+function loadComments() {
+  fetch('/com-data').then(response => response.json()).then((comments) => {
+    const commentListElement = document.getElementById('comment-list');
+    let cur_rate = 0;
+    comments.forEach((comment) => {
+      cur_rate += Number(comment.rate);
+      commentListElement.appendChild(createCommentElement(comment));
+    });
+    let rating = comments.length > 0 ? cur_rate / comments.length : 0;
+    const ratingElement = document.getElementById("rating");
+    ratingElement.innerText = "Rating: " + String(rating.toFixed(2));
+  });
+}
+
+function createCommentElement(comment) {
+  const commentElement = document.createElement('li');
+  commentElement.className = 'comment';
+
+  const titleElement = document.createElement('span');
+  let user = comment.user == "your name" ? "user" : comment.user;
+  titleElement.innerHTML = "<p>" + user + ": " + comment.title + "<br/></p>";
+  titleElement.style.flexWrap = "wrap";
+
+  const deleteButtonElement = document.createElement('button');
+  deleteButtonElement.innerText = 'Delete';
+  deleteButtonElement.style.height = "30px";
+  deleteButtonElement.style.width = "50px";
+  deleteButtonElement.addEventListener('click', () => {
+    deleteComment(comment);
+
+    // Remove the task from the DOM.
+    commentElement.remove();
+  });
+
+  commentElement.appendChild(titleElement);
+  commentElement.appendChild(deleteButtonElement);
+  commentElement.style.marginLeft = "auto";
+  commentElement.style.marginRight = "auto";
+  commentElement.style.width = "400px";
+  return commentElement;
+}
+    
+function deleteComment(comment) {
+  const params = new URLSearchParams();
+  params.append('id', comment.id);
+  fetch('/delete-comments', {method: 'POST', body: params});
 }
 
 function translate(num) {
@@ -200,16 +264,19 @@ function pop(fact_id) {
 }
 
 let el = document.getElementById("fact");
-el.addEventListener("click", function() {fly(600, -600, 0, 2.5, -4, "one");}, false);
-el.addEventListener("click", function() {fly(350, -500, 0, 3.5, -2, "two");}, false);
-el.addEventListener("click", function() {fly(1000, -100, 0, 1, -1, "three");}, false);
-el.addEventListener("click", function() {fly(800, -300, 0, 4, -1, "four");}, false);
-el.addEventListener("click", function() {fly(1200, -500, 0, -2, 4, "five");}, false);
-el.addEventListener("click", function() {fly(240, -350, 0, 1, -1, "six");}, false);
-el.addEventListener("click", function() {fly(900, -750, 0, 5, -1.5, "seven");}, false);
-el.addEventListener("click", function() {fly(1300, -300, 0, 3, -0.5, "eight");}, false);
-el.addEventListener("click", function() {fly(500, -200, 0, 2, -0.5, "nine");}, false);
-el.addEventListener("click", function() {fly(1400, -700, 0, 2, -1, "ten");}, false);
+if (el) {
+    el.addEventListener("click", function() {fly(600, -600, 0, 2.5, -4, "one");}, false);
+    el.addEventListener("click", function() {fly(350, -500, 0, 3.5, -2, "two");}, false);
+    el.addEventListener("click", function() {fly(1000, -100, 0, 1, -1, "three");}, false);
+    el.addEventListener("click", function() {fly(800, -300, 0, 4, -1, "four");}, false);
+    el.addEventListener("click", function() {fly(1200, -500, 0, -2, 4, "five");}, false);
+    el.addEventListener("click", function() {fly(240, -350, 0, 1, -1, "six");}, false);
+    el.addEventListener("click", function() {fly(900, -750, 0, 5, -1.5, "seven");}, false);
+    el.addEventListener("click", function() {fly(1300, -300, 0, 3, -0.5, "eight");}, false);
+    el.addEventListener("click", function() {fly(500, -200, 0, 2, -0.5, "nine");}, false);
+    el.addEventListener("click", function() {fly(1400, -700, 0, 2, -1, "ten");}, false);
+}
+
 
 let e = document.getElementById("bubbles");
 e.addEventListener("click", function() {
