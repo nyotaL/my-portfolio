@@ -476,4 +476,36 @@ li {
   list-style-type: none;
 }
 
+#back {
+  background-color: aquamarine;
+  border: thin solid #222;
+  height: 25px;
+  width: 25px;
+}
 
+#welcome {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#comment-list {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#comment-lest button {
+  height: 20px;
+  width: 70px;
+}
+
+#feedback_content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  height: 950px;
+}
+
+#rating {
+  height: 100px;
+  width: 100px;
+}

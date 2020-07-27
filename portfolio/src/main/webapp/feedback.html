@@ -6,20 +6,33 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
-    <div>
-      <h1>Comments</h1>
-      <form action="/data" method="POST">
+  <body onload="loadComments()">
+    <div id="back"><a href="index.html">☚</a></div>
+    <div id="feedback_content">
+      <h1 id="welcome">Comments</h1>
+      <p id="welcome">Comment on my portfolio! See what other people think.</p>
+      <form method="POST" action="/comments-data" id="welcome">
+        <input type="text" name="user" maxlength="20" value="your name"/>
+        <input type="text" name="title" maxlength="200" value="your comment"/>
+        <p>Rate my site</p>
+        <p><select size="1" name="rating">
+          <option disabled>Rate</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option selected value="5">5</option>
+        </select></p>
+        <br/>
+        <button>Submit</button>
+      </form>
 
-        <p>Enter a comment:</p>
-        <textarea name="comment-input">your comment</textarea>
-        <br/><br/>
+      <hr/>
 
-        <input type="submit" />
-      </form>      
-      <p>Click here to see the comments about my page:</p>
-      <button onclick="getComments()">See<br/> comments!</button>
-      <ul id="comments-container"></ul> 
+      <div id="rating"></div>
+
+      <ul id="comment-list"></ul>
+
     </div>
   </body>
 </html>

@@ -15,7 +15,7 @@
 /**
  * Adds a random greeting to the page.
  */
-async function addRandomGreeting() {
+function addRandomGreeting() {
   const greetings =
       ['Avoid fruits and nuts. You are what you eat', 
        'Chop your own wood and it will warm you twice', 
@@ -30,22 +30,51 @@ async function addRandomGreeting() {
   greetingContainer.innerHTML = greeting;
 }
 
-async function getComments() {
-    const response = await fetch('/data');
-    const comments = await response.json();
-    const ListElement = document.getElementById("comments-container");
-    ListElement.innerHTML = '';
-    for (let i = 0; i < comments.length; i++) {
-        ListElement.appendChild(
-        createListElement(comments[i]));
-    }
+/** Fetches comments from the server and adds them to the DOM. */
+function loadComments() {
+  fetch('/comments-data').then(response => response.json()).then((comments) => {
+    const commentListElement = document.getElementById('comment-list');
+    let cur_rate = 0;
+    comments.forEach((comment) => {
+      cur_rate += Number(comment.rate);
+      commentListElement.appendChild(createCommentElement(comment));
+    });
+    let rating = comments.length > 0 ? cur_rate / comments.length : 0;
+    const ratingElement = document.getElementById("rating");
+    ratingElement.innerText = "Rating: " + String(rating.toFixed(2));
+  });
+}
+
+function createCommentElement(comment) {
+  const commentElement = document.createElement('li');
+  commentElement.className = 'comment';
+
+  const titleElement = document.createElement('span');
+  let user = comment.user == "your name" ? "user" : comment.user;
+  titleElement.innerHTML = "<p>" + user + ": " + comment.title + "<br/></p>";
+  titleElement.style.flexWrap = "wrap";
+
+  const deleteButtonElement = document.createElement('button');
+  deleteButtonElement.innerText = 'Delete';
+  deleteButtonElement.addEventListener('click', () => {
+    deleteComment(comment);
+
+    // Remove the task from the DOM.
+    commentElement.remove();
+  });
+
+  commentElement.appendChild(titleElement);
+  commentElement.appendChild(deleteButtonElement);
+  commentElement.style.marginLeft = "auto";
+  commentElement.style.marginRight = "auto";
+  commentElement.style.width = "400px";
+  return commentElement;
 }
     
-
-function createListElement(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+function deleteComment(comment) {
+  const params = new URLSearchParams();
+  params.append('id', comment.id);
+  fetch('/delete-comments', {method: 'POST', body: params});
 }
 
 function translate(num) {
