@@ -552,8 +552,8 @@ input, select {
 }
 
 #feedback h1 {
-    color: rgb(202, 248, 248);
-    text-shadow: 1px 1px 0 rgb(0, 60, 255);
+  color: rgb(202, 248, 248);
+  text-shadow: 1px 1px 0 rgb(0, 60, 255);
 }
 
 #rating {
