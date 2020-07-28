@@ -48,6 +48,25 @@ if (comment_input) {
     comment_input.addEventListener("click", function() {comment_input.value = "";}, false);
 }
 
+//Fetches authentication
+function login() {
+    fetch('/login_page').then(response => response.json()).then((pair) => {
+        const page = document.getElementById('log');
+        const loginElement = document.createElement('div');
+        loginElement.className = 'login';
+        loginElement.innerHTML = pair[1];
+        page.appendChild(loginElement);
+        if (pair[0] == "true") {
+            document.getElementById("content").style.visibility = "visible";
+            loginElement.style.marginLeft = "1300px";
+        } else {
+            document.getElementById("content").style.visibility = "hidden";
+            loginElement.style.marginLeft = "auto";
+        }
+        const load = document.getElementById('login_page');
+        load.style.visibility = "hidden";
+    });
+}
 
 /** Fetches comments from the server and adds them to the DOM. */
 function loadComments() {
