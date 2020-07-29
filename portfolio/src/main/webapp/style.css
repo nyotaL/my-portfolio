@@ -23,7 +23,7 @@ button text {
 
 #login_page {
   color: white;
-  margin-left: auto;
+  left: 800px;
   margin-right: auto;
   margin-top: 200px;
   position: absolute;
@@ -36,6 +36,7 @@ button text {
   height: 200px;
   margin-left: auto;
   margin-right: auto;
+  top: 200px;
   width: 300px;
 }
 

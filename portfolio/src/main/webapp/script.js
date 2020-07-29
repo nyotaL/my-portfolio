@@ -50,18 +50,19 @@ if (comment_input) {
 
 //Fetches authentication
 function login() {
-    fetch('/login_page').then(response => response.json()).then((pair) => {
+    fetch('/login_page').then(response => response.json()).then((login) => {
         const page = document.getElementById('log');
         const loginElement = document.createElement('div');
         loginElement.className = 'login';
-        loginElement.innerHTML = pair[1];
+        loginElement.innerHTML = login.message;
         page.appendChild(loginElement);
-        if (pair[0] == "true") {
+        if (login.status) {
             document.getElementById("content").style.visibility = "visible";
             loginElement.style.marginLeft = "1300px";
         } else {
             document.getElementById("content").style.visibility = "hidden";
             loginElement.style.marginLeft = "auto";
+            loginElement.style.marginTop = "200px";
         }
         const load = document.getElementById('login_page');
         load.style.visibility = "hidden";

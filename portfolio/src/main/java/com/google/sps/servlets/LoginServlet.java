@@ -22,9 +22,9 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import java.io.PrintWriter;
 import com.google.gson.Gson;
-import com.google.sps.data.Comment;
+import com.google.sps.data.Login;
+import java.io.PrintWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/login_page")
 public class LoginServlet extends HttpServlet {
 
-  private String loginStatus = "false";
+  private boolean loginStatus = false;
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -47,33 +47,25 @@ public class LoginServlet extends HttpServlet {
     // Only logged-in users can see the form
     UserService userService = UserServiceFactory.getUserService();
     if (userService.isUserLoggedIn()) {
-      loginStatus = "true";
+      loginStatus = true;
       String userEmail = userService.getCurrentUser().getEmail();
       String urlToRedirectToAfterUserLogsOut = "/index.html";
       String logoutUrl = userService.createLogoutURL(urlToRedirectToAfterUserLogsOut);
-      String message_1 = "<p>Hello " + userEmail + "!</p>" 
-           + "<p>Logout <a href=\"" + logoutUrl + "\">here</a>.</p>";
-      List<String> pair_1 = new ArrayList<String>();
-      pair_1.add(loginStatus);
-      pair_1.add(message_1);
+      String loginMessage = "<p>Hello " + userEmail + "!</p>" 
+           + "<p><a href=\"" + logoutUrl + "\">Logout</a></p>";
+      Login login = new Login(loginStatus, loginMessage);
 
       Gson gson = new Gson();
-      out.println(gson.toJson(pair_1));
-      //out.println("<p>Hello " + userEmail + "!</p>");
-      //out.println("<p>Logout <a onclick=\"hide()\" href=\"" + logoutUrl + "\">here</a>.</p>");
+      out.println(gson.toJson(login));
     } else {
-      loginStatus = "false";
+      loginStatus = false;
       String loginUrl = userService.createLoginURL("/index.html");
-      String message_2 = "<p>Login <a href=\"" + loginUrl 
+      String logoutMessage = "<p>Login <a href=\"" + loginUrl 
             + "\">here</a>.</p>";
-      List<String> pair_2 = new ArrayList<String>();
-      pair_2.add(loginStatus);
-      pair_2.add(message_2);
+      Login login = new Login(loginStatus, logoutMessage);
 
       Gson gson = new Gson();
-      out.println(gson.toJson(pair_2));
-      //out.println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
-      //out.println
+      out.println(gson.toJson(login)); 
     }
   }
 }
