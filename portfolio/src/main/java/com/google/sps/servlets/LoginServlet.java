@@ -37,8 +37,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/login_page")
 public class LoginServlet extends HttpServlet {
 
-  private boolean loginStatus = false;
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json;");
@@ -47,7 +45,7 @@ public class LoginServlet extends HttpServlet {
     // Only logged-in users can see the form
     UserService userService = UserServiceFactory.getUserService();
     if (userService.isUserLoggedIn()) {
-      loginStatus = true;
+      boolean loginStatus = true;
       String userEmail = userService.getCurrentUser().getEmail();
       String urlToRedirectToAfterUserLogsOut = "/index.html";
       String logoutUrl = userService.createLogoutURL(urlToRedirectToAfterUserLogsOut);
@@ -58,10 +56,10 @@ public class LoginServlet extends HttpServlet {
       Gson gson = new Gson();
       out.println(gson.toJson(login));
     } else {
-      loginStatus = false;
+      boolean loginStatus = false;
       String loginUrl = userService.createLoginURL("/index.html");
-      String logoutMessage = "<p>Login <a href=\"" + loginUrl 
-            + "\">here</a>.</p>";
+      String logoutMessage = "<h1><a href=\"" + loginUrl 
+            + "\">Login</a></h1>";
       Login login = new Login(loginStatus, logoutMessage);
 
       Gson gson = new Gson();

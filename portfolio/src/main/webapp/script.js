@@ -71,12 +71,14 @@ function login() {
 
 /** Fetches comments from the server and adds them to the DOM. */
 function loadComments() {
-  fetch('/com-data').then(response => response.json()).then((comments) => {
+  fetch('/com-data').then(response => response.json()).then((commentIdentity) => {
+    
+    let comments = commentIdentity.comments;
     const commentListElement = document.getElementById('comment-list');
     let cur_rate = 0;
     comments.forEach((comment) => {
       cur_rate += Number(comment.rate);
-      commentListElement.appendChild(createCommentElement(comment));
+      commentListElement.appendChild(createCommentElement(comment, commentIdentity.email));
     });
     let rating = comments.length > 0 ? cur_rate / comments.length : 0;
     const ratingElement = document.getElementById("rating");
@@ -84,28 +86,32 @@ function loadComments() {
   });
 }
 
-function createCommentElement(comment) {
+function createCommentElement(comment, email) {
   const commentElement = document.createElement('li');
   commentElement.className = 'comment';
 
   const titleElement = document.createElement('span');
-  let user = comment.user == "your name" ? "user" : comment.user;
+  let user = comment.user == "your name" ? comment.email : comment.user;
   titleElement.innerHTML = "<p>" + user + ": " + comment.title + "<br/></p>";
   titleElement.style.flexWrap = "wrap";
 
   const deleteButtonElement = document.createElement('button');
-  deleteButtonElement.innerText = 'Delete';
-  deleteButtonElement.style.height = "30px";
-  deleteButtonElement.style.width = "50px";
-  deleteButtonElement.addEventListener('click', () => {
-    deleteComment(comment);
+  if (comment.email == email) {
+    deleteButtonElement.innerText = 'Delete';
+    deleteButtonElement.style.height = "30px";
+    deleteButtonElement.style.width = "50px";
+    deleteButtonElement.addEventListener('click', () => {
+      deleteComment(comment);
 
-    // Remove the task from the DOM.
-    commentElement.remove();
-  });
+      // Remove the task from the DOM.
+      commentElement.remove();
+    });
+  }
 
   commentElement.appendChild(titleElement);
-  commentElement.appendChild(deleteButtonElement);
+  if (comment.email == email) {
+      commentElement.appendChild(deleteButtonElement);
+  }
   commentElement.style.marginLeft = "auto";
   commentElement.style.marginRight = "auto";
   commentElement.style.width = "400px";
