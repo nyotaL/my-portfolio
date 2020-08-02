@@ -305,26 +305,77 @@ if (el) {
 
 
 let e = document.getElementById("bubbles");
-e.addEventListener("click", function() {
-let txt = document.getElementById("fun");
-txt.innerHTML = "Pop the bubbles!<br> Click to play again";
-bubble("one");
-bubble("two");
-bubble("three");
-bubble("four");
-bubble("five");
-bubble("six");
-bubble("seven");
-bubble("eight");
-bubble("nine");
-bubble("ten");}, false);
+if (e) {
+    e.addEventListener("click", function() {
+    let txt = document.getElementById("fun");
+    txt.innerHTML = "Pop the bubbles!<br> Click to play again";
+    bubble("one");
+    bubble("two");
+    bubble("three");
+    bubble("four");
+    bubble("five");
+    bubble("six");
+    bubble("seven");
+    bubble("eight");
+    bubble("nine");
+    bubble("ten");}, false); 
+}
+
 
 function animation(fact_id) {
     let e = document.getElementById(fact_id);
-    e.addEventListener("mouseover", function() {pop(fact_id);});
+    if (e) {
+      e.addEventListener("mouseover", function() {pop(fact_id);});  
+    }  
 }
 
 facts.forEach(function(item) {
     animation(item);
 });
 
+function clickEvent(marker, map, pos) {
+  marker.addListener("click", () => {
+    map.setZoom(15);
+    map.setCenter(marker.getPosition());
+    map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+    document.getElementById('pano').style.visibility = "visible";
+    const panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'), {
+      position: pos
+    });
+  });
+}
+
+function createMarker(map, pos, title) {
+  let newMarker = new google.maps.Marker({
+    position: pos,
+    map: map,
+    title: title
+  });
+  clickEvent(newMarker, map, pos);
+  return newMarker;
+}
+
+function zoomBack(map) {
+  map.setZoom(3);
+  map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+  map.setCenter(new google.maps.LatLng(43.874206, -43.366826));
+  document.getElementById('pano').style.visibility = "hidden";
+}
+
+function createMap() {
+  const MapOptions = {
+    zoom: 3,
+    center: new google.maps.LatLng(43.874206, -43.366826),
+  }
+  map = new google.maps.Map(
+      document.getElementById('map'),
+      MapOptions);
+  document.getElementById('zoom').addEventListener("click", function() {
+    zoomBack(map);
+  })
+  const TarifaMarker = createMarker(map, {lat: 36.007292, lng: -5.608263}, 'Tarifa');
+  const RhodesMarker = createMarker(map, {lat: 35.886453, lng: 27.770291}, 'Rhodes');
+  const IslaMarker = createMarker(map, {lat: 21.322205, lng: -86.808729}, 'Isla Blanca');
+  const BlagaMarker = createMarker(map, {lat: 45.076941, lng: 37.055417}, 'Blaga');
+  const RachesMarker = createMarker(map, {lat: 38.870265, lng: 22.758410}, 'Raches');
+}

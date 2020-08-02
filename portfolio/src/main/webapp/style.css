@@ -581,3 +581,22 @@ input, select {
 #rating {
   color: rgb(255, 255, 177);
 }
+
+#spots_content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
+
+#map, #pano {
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
+
+#zoom {
+  background-color: rgb(255, 116, 116);
+  height: 50px;
+  width: 100px;
+}

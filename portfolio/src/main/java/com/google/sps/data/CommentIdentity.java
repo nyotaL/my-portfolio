@@ -13,7 +13,6 @@ package com.google.sps.data;
 import com.google.sps.data.Comment;
 import java.util.List;
 
-/** An item on a todo list. */
 public final class CommentIdentity {
 
   List<Comment> comments;
