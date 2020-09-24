@@ -10,21 +10,16 @@
 
 package com.google.sps.data;
 
-public final class Comment {
+import com.google.sps.data.Comment;
+import java.util.List;
 
-  private final long id;
-  private final String title;
-  private final long timestamp;
-  private final String user;
-  private final String rate;
-  private final String email;
+public final class CommentIdentity {
 
-  public Comment(long id, String title, long timestamp, String user, String rate, String email) {
-    this.id = id;
-    this.title = title;
-    this.timestamp = timestamp;
-    this.user = user;
-    this.rate = rate;
+  List<Comment> comments;
+  String email;
+
+  public CommentIdentity(List<Comment> comments, String email) {
+    this.comments = comments;
     this.email = email;
   }
 }

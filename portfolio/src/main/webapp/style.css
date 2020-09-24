@@ -21,15 +21,37 @@ button text {
   background-color: black;
 }
 
-#content {
+#login_page {
+  color: white;
+  left: 800px;
+  margin-right: auto;
+  margin-top: 200px;
+  position: absolute;
+  z-index: 0;
+}
+
+.login {
+  background-color: black;
+  color: white;
+  height: 200px;
   margin-left: auto;
   margin-right: auto;
-  width: 900px;
+  top: 200px;
+  width: 300px;
+}
+
+#content {
   height: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  visibility: hidden;
+  width: 900px;
+  position: absolute;
+  z-index: 1;
 }
 
 #content h1 {
-    color: white;
+  color: white;
 }
 
 #gallery_content {
@@ -78,13 +100,13 @@ iframe {
 }
 
 #content {
-    background-color: black;
-    background-image: url(Backgrounds/blue.jpg);
-    background-blend-mode: hard-light;
+  background-color: black;
+  background-image: url(Backgrounds/blue.jpg);
+  background-blend-mode: hard-light;
 }
 
 #main {
-    background-color: black;
+  background-color: black;
 }
 
 #intro {
@@ -552,10 +574,29 @@ input, select {
 }
 
 #feedback h1 {
-    color: rgb(202, 248, 248);
-    text-shadow: 1px 1px 0 rgb(0, 60, 255);
+  color: rgb(202, 248, 248);
+  text-shadow: 1px 1px 0 rgb(0, 60, 255);
 }
 
 #rating {
   color: rgb(255, 255, 177);
+}
+
+#spots_content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
+
+#map, #pano {
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
+
+#zoom {
+  background-color: rgb(255, 116, 116);
+  height: 50px;
+  width: 100px;
 }

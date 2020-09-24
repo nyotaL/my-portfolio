@@ -10,21 +10,14 @@
 
 package com.google.sps.data;
 
-public final class Comment {
+/** An item on a todo list. */
+public final class Login {
 
-  private final long id;
-  private final String title;
-  private final long timestamp;
-  private final String user;
-  private final String rate;
-  private final String email;
+  private final boolean status;
+  private final String message;
 
-  public Comment(long id, String title, long timestamp, String user, String rate, String email) {
-    this.id = id;
-    this.title = title;
-    this.timestamp = timestamp;
-    this.user = user;
-    this.rate = rate;
-    this.email = email;
+  public Login(boolean status, String message) {
+    this.status = status;
+    this.message = message;
   }
 }

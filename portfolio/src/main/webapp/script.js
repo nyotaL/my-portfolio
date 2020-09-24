@@ -48,15 +48,37 @@ if (comment_input) {
     comment_input.addEventListener("click", function() {comment_input.value = "";}, false);
 }
 
+//Fetches authentication
+function login() {
+    fetch('/login_page').then(response => response.json()).then((login) => {
+        const page = document.getElementById('log');
+        const loginElement = document.createElement('div');
+        loginElement.className = 'login';
+        loginElement.innerHTML = login.message;
+        page.appendChild(loginElement);
+        if (login.status) {
+            document.getElementById("content").style.visibility = "visible";
+            loginElement.style.marginLeft = "1300px";
+        } else {
+            document.getElementById("content").style.visibility = "hidden";
+            loginElement.style.marginLeft = "auto";
+            loginElement.style.marginTop = "200px";
+        }
+        const load = document.getElementById('login_page');
+        load.style.visibility = "hidden";
+    });
+}
 
 /** Fetches comments from the server and adds them to the DOM. */
 function loadComments() {
-  fetch('/com-data').then(response => response.json()).then((comments) => {
+  fetch('/com-data').then(response => response.json()).then((commentIdentity) => {
+    
+    let comments = commentIdentity.comments;
     const commentListElement = document.getElementById('comment-list');
     let cur_rate = 0;
     comments.forEach((comment) => {
       cur_rate += Number(comment.rate);
-      commentListElement.appendChild(createCommentElement(comment));
+      commentListElement.appendChild(createCommentElement(comment, commentIdentity.email));
     });
     let rating = comments.length > 0 ? cur_rate / comments.length : 0;
     const ratingElement = document.getElementById("rating");
@@ -64,28 +86,32 @@ function loadComments() {
   });
 }
 
-function createCommentElement(comment) {
+function createCommentElement(comment, email) {
   const commentElement = document.createElement('li');
   commentElement.className = 'comment';
 
   const titleElement = document.createElement('span');
-  let user = comment.user == "your name" ? "user" : comment.user;
+  let user = comment.user == "your name" ? comment.email : comment.user;
   titleElement.innerHTML = "<p>" + user + ": " + comment.title + "<br/></p>";
   titleElement.style.flexWrap = "wrap";
 
   const deleteButtonElement = document.createElement('button');
-  deleteButtonElement.innerText = 'Delete';
-  deleteButtonElement.style.height = "30px";
-  deleteButtonElement.style.width = "50px";
-  deleteButtonElement.addEventListener('click', () => {
-    deleteComment(comment);
+  if (comment.email == email) {
+    deleteButtonElement.innerText = 'Delete';
+    deleteButtonElement.style.height = "30px";
+    deleteButtonElement.style.width = "50px";
+    deleteButtonElement.addEventListener('click', () => {
+      deleteComment(comment);
 
-    // Remove the task from the DOM.
-    commentElement.remove();
-  });
+      // Remove the task from the DOM.
+      commentElement.remove();
+    });
+  }
 
   commentElement.appendChild(titleElement);
-  commentElement.appendChild(deleteButtonElement);
+  if (comment.email == email) {
+      commentElement.appendChild(deleteButtonElement);
+  }
   commentElement.style.marginLeft = "auto";
   commentElement.style.marginRight = "auto";
   commentElement.style.width = "400px";
@@ -279,26 +305,77 @@ if (el) {
 
 
 let e = document.getElementById("bubbles");
-e.addEventListener("click", function() {
-let txt = document.getElementById("fun");
-txt.innerHTML = "Pop the bubbles!<br> Click to play again";
-bubble("one");
-bubble("two");
-bubble("three");
-bubble("four");
-bubble("five");
-bubble("six");
-bubble("seven");
-bubble("eight");
-bubble("nine");
-bubble("ten");}, false);
+if (e) {
+    e.addEventListener("click", function() {
+    let txt = document.getElementById("fun");
+    txt.innerHTML = "Pop the bubbles!<br> Click to play again";
+    bubble("one");
+    bubble("two");
+    bubble("three");
+    bubble("four");
+    bubble("five");
+    bubble("six");
+    bubble("seven");
+    bubble("eight");
+    bubble("nine");
+    bubble("ten");}, false); 
+}
+
 
 function animation(fact_id) {
     let e = document.getElementById(fact_id);
-    e.addEventListener("mouseover", function() {pop(fact_id);});
+    if (e) {
+      e.addEventListener("mouseover", function() {pop(fact_id);});  
+    }  
 }
 
 facts.forEach(function(item) {
     animation(item);
 });
 
+function clickEvent(marker, map, pos) {
+  marker.addListener("click", () => {
+    map.setZoom(15);
+    map.setCenter(marker.getPosition());
+    map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+    document.getElementById('pano').style.visibility = "visible";
+    const panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'), {
+      position: pos
+    });
+  });
+}
+
+function createMarker(map, pos, title) {
+  let newMarker = new google.maps.Marker({
+    position: pos,
+    map: map,
+    title: title
+  });
+  clickEvent(newMarker, map, pos);
+  return newMarker;
+}
+
+function zoomBack(map) {
+  map.setZoom(3);
+  map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+  map.setCenter(new google.maps.LatLng(43.874206, -43.366826));
+  document.getElementById('pano').style.visibility = "hidden";
+}
+
+function createMap() {
+  const MapOptions = {
+    zoom: 3,
+    center: new google.maps.LatLng(43.874206, -43.366826),
+  }
+  map = new google.maps.Map(
+      document.getElementById('map'),
+      MapOptions);
+  document.getElementById('zoom').addEventListener("click", function() {
+    zoomBack(map);
+  })
+  const TarifaMarker = createMarker(map, {lat: 36.007292, lng: -5.608263}, 'Tarifa');
+  const RhodesMarker = createMarker(map, {lat: 35.886453, lng: 27.770291}, 'Rhodes');
+  const IslaMarker = createMarker(map, {lat: 21.322205, lng: -86.808729}, 'Isla Blanca');
+  const BlagaMarker = createMarker(map, {lat: 45.076941, lng: 37.055417}, 'Blaga');
+  const RachesMarker = createMarker(map, {lat: 38.870265, lng: 22.758410}, 'Raches');
+}
